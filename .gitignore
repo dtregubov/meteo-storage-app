@@ -1,0 +1,12 @@
+*.pyc
+
+.idea/
+
+tmp/
+
+*.log
+
+!.gitkeep
+.envrc
+__pycache__/
+.env

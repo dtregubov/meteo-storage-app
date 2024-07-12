@@ -1,0 +1,13 @@
+{
+  "identifier": "435k65l345-95d3-4b9c-b0a4-34fsd234fs",
+  "sensor ": "TEM-456",
+  "date": "2024-05-28T15:22:18+02:00",
+  "city": "London",
+  "info": [
+    {
+      "category": "Temperature",
+      "measurement": 56,
+      "unit": "Celsius"
+    }
+  ]
+}
