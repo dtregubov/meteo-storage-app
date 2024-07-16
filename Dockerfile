@@ -13,4 +13,9 @@ EXPOSE 8001
 RUN pip install --upgrade pip setuptools wheel \
     && pip install pipenv \
     && pipenv install --system -d \
-    && rm -rf /root/.cache/pip
+    && rm -rf /root/.cache/pip \
+    && addgroup --system appgroup  \
+    && adduser --system appuser --ingroup appgroup \
+    && chown -R appuser:appgroup /app
+
+USER appuser
