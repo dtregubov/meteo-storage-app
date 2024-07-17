@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 from .views import ForecastView, InfoView, MeasurementView, MeteorologicalStationView, SensorView, receive_meteo_data
@@ -36,4 +37,7 @@ urlpatterns = [
 
     # recieve data
     path('receive-meteo-data/', receive_meteo_data, name='receive_meteo_data'),
+
+    # main page redirect
+    path('', RedirectView.as_view(url='/admin/', permanent=True)),
 ]
