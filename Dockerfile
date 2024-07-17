@@ -2,7 +2,7 @@ FROM python:3.10
 LABEL maintainer="Dmitrii Tregubov"
 
 ENV PYTHONUNBUFFERED 1
-ENV PYTHONPATH /app/
+ENV PYTHONPATH /
 
 COPY Pipfile Pipfile.lock /app/
 COPY ./app /app

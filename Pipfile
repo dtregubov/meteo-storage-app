@@ -6,9 +6,17 @@ name = "pypi"
 [packages]
 celery = "*"
 django = "*"
+django-celery-beat = "*"
+django-model-utils = "*"
 djangorestframework = "*"
+drf-spectacular = "*"
+isort = "*"
 psycopg2-binary = "==2.9.6"
+prospector = "*"
+pytest-cov = "*"
+pytest-django = "*"
 redis = "*"
+requests = "*"
 
 [dev-packages]
 

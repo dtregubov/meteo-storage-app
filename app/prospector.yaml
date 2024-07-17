@@ -1,0 +1,37 @@
+inherits:
+    - strictness_high
+    - full_pep8
+
+test-warnings: true
+
+pycodestyle:
+    full: true
+    options:
+        max-line-length: 120
+
+pylint:
+    options:
+        max-args: 10
+        max-line-length: 120
+        max-parents: 10
+    disable:
+        - django-not-configured
+        - secret  # only for developing, should be deleted
+        - import-outside-toplevel
+        - invalid-name
+
+dodgy:
+    run: false
+
+pyflakes:
+    run: false
+
+mccabe:
+  options:
+    max-complexity: 21
+
+ignore-patterns:
+    - .*/migrations
+
+output-format:
+    pylint

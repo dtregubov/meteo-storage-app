@@ -1,0 +1,19 @@
+[run]
+source = .
+
+omit =
+    *local_*.py,
+    local/*,
+    manage.py,
+    */migrations/*,
+    */tests/*,
+    */asgi.py,
+    */settings.py,
+    */apps.py,
+    */celery.py,
+    */__init__.py
+    */wsgi.py,
+
+[report]
+fail_under = 50
+show_missing = True

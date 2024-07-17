@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # libraries
+    'django_celery_beat',
+    'drf_spectacular',
     'rest_framework',
 
     # applications
     'api',
-    'app',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
     {
@@ -137,3 +139,23 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_TIMEZONE = 'UTC'
+CELERY_ACCEPT_CONTENT = ['json', 'pickle']
+
+CELERY_BEAT_SCHEDULE = {
+    'app.api.tasks.create_forecast_task': {
+        'task': 'app.api.tasks.create_forecast_task',
+        'schedule': timedelta(hours=1),
+    },
+    'app.api.tasks.send_forecast_task': {
+        'task': 'app.api.tasks.send_forecast_task',
+        'schedule': timedelta(days=1),
+    },
+}

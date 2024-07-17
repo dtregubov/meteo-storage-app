@@ -10,3 +10,4 @@ tmp/
 .envrc
 __pycache__/
 .env
+.coverage
